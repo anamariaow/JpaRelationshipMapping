@@ -16,17 +16,17 @@ public class LibroController {
     private LibroService libroService;
 
     @PostMapping("/create")
-    public ResponseEntity<Libro> createIndirizzo(@RequestBody Libro libro) {
+    public ResponseEntity<Libro> createLibro(@RequestBody Libro libro) {
         return ResponseEntity.ok(libroService.addLibro(libro));
     }
 
     @GetMapping("/findall")
-    public ResponseEntity<List<Libro>> findAllIndirizzo() {
+    public ResponseEntity<List<Libro>> findAllLibri() {
         return ResponseEntity.ok(libroService.getListaLibri());
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Optional<Libro>> findByIdIndirizzo(@RequestParam Long id) {
+    public ResponseEntity<Optional<Libro>> findByIdLibro(@RequestParam Long id) {
         Optional<Libro> libroOpt = libroService.getLibroById(id);
         if (libroOpt.isPresent()) {
             return ResponseEntity.ok(libroOpt);
@@ -36,7 +36,7 @@ public class LibroController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Libro> modifyIndirizzo(@PathVariable Long id, @RequestBody Libro libro) {
+    public ResponseEntity<Libro> modifyLibro(@PathVariable Long id, @RequestBody Libro libro) {
         Optional<Libro> libroOpt = libroService.updateLibro(id, libro);
         if (libroOpt.isPresent()) {
             return ResponseEntity.ok(libroOpt.get());
@@ -46,7 +46,7 @@ public class LibroController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Libro> deleteIndirizzo(Long id) {
+    public ResponseEntity<Libro> deleteLibro(Long id) {
         Optional<Libro> libroOpt = libroService.deleteLibroById(id);
         if (libroOpt.isPresent()) {
             return ResponseEntity.ok(libroOpt.get());
